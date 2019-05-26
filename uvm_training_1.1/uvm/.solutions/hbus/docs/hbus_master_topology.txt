@@ -1,0 +1,50 @@
+// Topology report for HBUS UVC with single master agent instance
+----------------------------------------------------------------
+UVM-1.1
+(C) 2007-2011 Mentor Graphics Corporation
+(C) 2007-2011 Cadence Design Systems, Inc.
+(C) 2006-2011 Synopsys, Inc.
+(C) 2011      Cypress Semiconductor Corp.
+----------------------------------------------------------------
+-----------------------------------------------------------------------
+Name                          Type                     Size  Value     
+-----------------------------------------------------------------------
+uvm_test_top                  hbus_master_topology     -     @255      
+  tb                          demo_tb                  -     @4909     
+    hbus                      hbus_env                 -     @4908     
+      masters[0]              hbus_master_agent        -     @5086     
+        driver                hbus_master_driver       -     @5228     
+          rsp_port            uvm_analysis_port        -     @6507     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          sqr_pull_port       uvm_seq_item_pull_port   -     @6433     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          random_delay        integral                 1     'h0       
+          master_id           integral                 32    'h0       
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+        sequencer             hbus_master_sequencer    -     @5002     
+          rsp_export          uvm_analysis_export      -     @5390     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          seq_item_export     uvm_seq_item_pull_imp    -     @6286     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+          arbitration_queue   array                    0     -         
+          lock_queue          array                    0     -         
+          num_last_reqs       integral                 32    'd1       
+          num_last_rsps       integral                 32    'd1       
+        monitor               hbus_monitor             -     @5001     
+        is_active             uvm_active_passive_enum  1     UVM_ACTIVE
+        master_id             integral                 32    'h0       
+        recording_detail      uvm_verbosity            32    UVM_FULL  
+      monitor                 hbus_monitor             -     @5001     
+        item_collected_port   uvm_analysis_port        -     @5158     
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+        checks_enable         integral                 1     'h1       
+        coverage_enable       integral                 1     'h1       
+        recording_detail      uvm_verbosity            32    UVM_FULL  
+      num_masters             integral                 32    'h1       
+      num_slaves              integral                 32    'h0       
+      checks_enable           integral                 1     'h1       
+      coverage_enable         integral                 1     'h1       
+      recording_detail        uvm_verbosity            32    UVM_FULL  
+    recording_detail          uvm_verbosity            32    UVM_FULL  
+-----------------------------------------------------------------------

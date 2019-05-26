@@ -1,0 +1,64 @@
+// Topology report for Channel UVC instance with TX agent
+----------------------------------------------------------------
+UVM-1.1
+(C) 2007-2011 Mentor Graphics Corporation
+(C) 2007-2011 Cadence Design Systems, Inc.
+(C) 2006-2011 Synopsys, Inc.
+(C) 2011      Cypress Semiconductor Corp.
+----------------------------------------------------------------
+-----------------------------------------------------------------------
+Name                          Type                     Size  Value     
+-----------------------------------------------------------------------
+uvm_test_top                  tx_topology              -     @246      
+  tb                          demo_tb                  -     @4870     
+    chan0                     channel_env              -     @4869     
+      monitor                 channel_monitor          -     @5005     
+        item_collected_port   uvm_analysis_port        -     @5160     
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+        resp_collected_port   uvm_analysis_port        -     @5236     
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+        instance_id           string                   9     Channel_0 
+        checks_enable         integral                 1     'h1       
+        coverage_enable       integral                 1     'h1       
+        recording_detail      uvm_verbosity            32    UVM_FULL  
+      tx_agent                channel_tx_agent         -     @4941     
+        driver                channel_tx_driver        -     @5315     
+          rsp_port            uvm_analysis_port        -     @6521     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          sqr_pull_port       uvm_seq_item_pull_port   -     @6447     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+        sequencer             channel_tx_sequencer     -     @5008     
+          rsp_export          uvm_analysis_export      -     @5404     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          seq_item_export     uvm_seq_item_pull_imp    -     @6300     
+            recording_detail  uvm_verbosity            32    UVM_FULL  
+          recording_detail    uvm_verbosity            32    UVM_FULL  
+          arbitration_queue   array                    0     -         
+          lock_queue          array                    0     -         
+          num_last_reqs       integral                 32    'd1       
+          num_last_rsps       integral                 32    'd1       
+        monitor               channel_monitor          -     @5005     
+        is_active             uvm_active_passive_enum  1     UVM_ACTIVE
+        recording_detail      uvm_verbosity            32    UVM_FULL  
+      has_tx                  integral                 1     'h1       
+      has_rx                  integral                 1     'h0       
+      checks_enable           integral                 1     'h1       
+      coverage_enable         integral                 1     'h1       
+      recording_detail        uvm_verbosity            32    UVM_FULL  
+    recording_detail          uvm_verbosity            32    UVM_FULL  
+-----------------------------------------------------------------------
+
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :    0
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+Simulation complete via $finish(1) at time 0 FS + 186
+/home2/bdickins/cadence/IUS92/tools/uvm-1.1/src/base/uvm_root.svh:408     $finish;
+ncsim> exit
+TOOL:	irun	09.20-s037: Exiting on Jan 24, 2012 at 12:35:03 GMT  (total: 00:00:00)

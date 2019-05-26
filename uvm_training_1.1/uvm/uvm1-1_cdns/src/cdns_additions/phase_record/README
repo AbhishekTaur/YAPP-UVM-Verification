@@ -1,0 +1,13 @@
+Example of recording phase transitions as transactions. Currently, there is no
+way to query the phasing system for user defined phases, so this prototype only
+works for the built-in phases.
+
+To see an example of two domains which are unsynchronized, do:
+  irun -uvmhome <path to uvm> phase_watcher_pkg.sv test.sv +UVM_TESTNAME=test -gui
+
+To see a case where the domains are synchronized add +SYNC to the command line
+and the domains will be synced so that the first domain done will wait for the
+other domain before starting its next phase.
+
+In Simvision, the phase transactions are recorded under "uvm_phases". Each domain
+has its own stream that its phases are recorded on.

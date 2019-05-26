@@ -1,0 +1,4 @@
+irun packet_p.sv pds_vc.sv switch_port.sv port_if.sv top_4pds_vc.sv \
+   -timescale 1ns/100ps \
+# +gui +access+rwc
+

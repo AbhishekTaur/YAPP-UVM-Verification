@@ -1,0 +1,2 @@
+`define UVM_KIT_VERSION 10.20-s100
+`define UVM_KIT_DATE 2011-10-05

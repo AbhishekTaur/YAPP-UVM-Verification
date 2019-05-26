@@ -1,0 +1,83 @@
+                           Interface UVC Builder
+                               Version 1.0
+                                Protocol
+                               20-Sep-2007
+
+
+  Copyright ©2007 Cadence Design Systems, Inc. All rights reserved.
+
+
+_______________________________________________________
+CONTENTS
+
+  1.  Overview
+
+  2.  Signals 
+  
+  3.  Driving a packet
+
+_______________________________________________________
+1. OVERVIEW
+
+* This is a simple representative point-to-point protocol.
+* It supports one m and one s.
+* The protocol data item is packet.
+
+_______________________________________________________
+2. SIGNALS
+
+System signals
+--------------
+
+* sig_clock - Provides timing for all packets on the DUT, all
+  the DUT signals are sampled on the rising edge of 'clock'.  
+
+* sig_reset - This signal asserted state accurs when it is high voltage.
+  Anytime this signal is asserted, all signals are initiated.
+  It is asserted at the beginning of the test and de-asserted after 500ns.
+  `reset` may be asynchronous with the clock.
+ 
+Interface control signals
+-------------------------
+
+* sig_valid - This signal is asserted by the m agent
+  at the beginning of each packet, and de-asserted at the end
+  of the packet.
+
+* sig_ack - This signal is asserted for one cycle during the each s
+  response.
+
+Data signal
+-----------
+ 		
+* sig_data[31:0] - This signal is used to packet data from the m
+  agent to the s agent. 
+ 
+________________________________________________________
+3. Driving a packet
+
+The m agent: 
+* Asserts the 'sig_valid' and writes data to the 'sig_data'.	      
+* waits for the 'sig_ack' to be asserted.
+* De-asserts the 'sig_valid' signal and init 'sig_data'.
+* wait one cycle.
+
+The s agent:
+* waits for the 'sig_valid' to be asserted.
+* read data form the 'sig_data' signal.
+* asserts the 'sig_ack' signal for one cycle.
+
+Signals:	
+			
+sig_clock           _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+                   | |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |
+sig_reset           _______________
+                   |               |__________________________________________
+	    	
+sig_valid                               _______        
+                   ____________________|       |______________________________
+                                            ___            
+sig_ack            ________________________|   |______________________________
+                    __________________  _______  _____________________________
+sig_data           <______0000000_____><_X0X0X_><___________0000000___________
+ 
