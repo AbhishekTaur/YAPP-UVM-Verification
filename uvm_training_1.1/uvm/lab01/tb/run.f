@@ -1,13 +1,11 @@
-//-----------------------------------------------------------
-// UVM template run file 
-// Set $UVMHOME to install directory of UVM library
-//------------------------------------------------------------
-
+//-----------------------------------------------
+// UVM run file for lab01
+//------------------------------------------------
 -uvmhome $UVMHOME
-
-// include directories
-//*** add include directories here
+// include directories, starting with UVM src directory
+-incdir ../sv
 
 // compile files
-//*** add extra compile files here
 
+../sv/yapp_pkg.sv // compile YAPP package
+top.sv            // compile top level module
