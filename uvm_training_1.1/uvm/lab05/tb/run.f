@@ -7,9 +7,10 @@
 
 // compile files
 +SVSEED=random
-+UVM_TESTNAME=set_config_test
-+UVM_TESTNAME=short_packet_test
-+UVM_VERBOSITY=UVM_HIGH
+//+UVM_TESTNAME=set_config_test
+//+UVM_TESTNAME=incr_payload_test
++UVM_TESTNAME=exhaustive_seq_test
++UVM_VERBOSITY=UVM_FULL
 
 ../sv/yapp_pkg.sv // compile YAPP package
 top.sv            // compile top level module
