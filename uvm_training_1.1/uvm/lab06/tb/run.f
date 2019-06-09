@@ -9,8 +9,23 @@
 +SVSEED=random
 //+UVM_TESTNAME=set_config_test
 //+UVM_TESTNAME=incr_payload_test
-+UVM_TESTNAME=exhaustive_seq_test
+//+UVM_TESTNAME=exhaustive_seq_test
++UVM_TESTNAME=router_dut_test
 +UVM_VERBOSITY=UVM_FULL
 
-../sv/yapp_pkg.sv // compile YAPP package
-top.sv            // compile top level module
+//-gui
+//+access+rwc
+
+// default timescale
+-timescale 1ns/100ps 
+
+// compile files
+// UVC package
+../sv/yapp_pkg.sv
+
+// UVC interfaces
+../sv/yapp_if.sv 
+
+//top_no_dut.sv
+../../router_rtl/yapp_router.v
+top_dut.sv

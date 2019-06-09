@@ -200,7 +200,7 @@ endclass : six_yapp_seq
 
 class yapp_exhaustive_seq extends yapp_base_seq;
 
-	`uvm_object_utils(yapp_exhaustive_seq);
+	`uvm_object_utils(yapp_exhaustive_seq)
 
 	function new(string name="yapp_exhaustive_seq");
 		super.new(name);
