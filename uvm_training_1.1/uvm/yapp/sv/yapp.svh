@@ -1,6 +1,7 @@
 typedef uvm_config_db#(virtual interface yapp_if) yapp_vif_config;
 
-`include "yapp_packet.sv"
+import yapp_pkt_pkg::*;
+
 `include "yapp_tx_monitor.sv"
 `include "yapp_tx_sequencer.sv"
 `include "yapp_tx_seqs.sv"

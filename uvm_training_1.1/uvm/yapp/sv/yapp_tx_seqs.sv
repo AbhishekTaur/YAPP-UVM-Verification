@@ -229,3 +229,45 @@ class yapp_exhaustive_seq extends yapp_base_seq;
 
 
 endclass : yapp_exhaustive_seq
+
+
+//------------------------------------------------------------------------------
+//
+// SEQUENCE: test_ovc_seq - sends packets to all 4 channels with
+// incrementing payloads from 1 to 22. Used in Lab07
+//
+//------------------------------------------------------------------------------
+
+
+class test_ovc_seq extends yapp_base_seq;
+
+  `uvm_object_utils(test_ovc_seq)
+
+  // Constructor
+  function new(string name="test_ovc_seq");
+    super.new(name);
+  endfunction
+
+  // Sequence body definition
+  virtual task body();
+    `uvm_info(get_type_name(), "Executing TEST_OVC_SEQ", UVM_LOW)
+    `uvm_create(req)
+    req.packet_delay = 1;
+    for (int ad=0; ad < 4; ad++) begin
+      req.addr = ad;
+      for (int lgt=1; lgt < 23; lgt++) begin
+        req.length = lgt;
+        req.payload = new[lgt];
+        for (int pld = 0; pld < lgt; pld++)
+          req.payload[pld] = pld;
+        randcase
+          20 : req.parity_type = BAD_PARITY;
+          80 : req.parity_type = GOOD_PARITY;
+        endcase
+         req.set_parity();
+        `uvm_send(req)
+      end
+    end
+  endtask
+
+endclass : test_ovc_seq
