@@ -12,6 +12,8 @@ class router_tb extends uvm_component;
 
 	hbus_env hbus;
 
+	router_virtual_sequencer virtual_sequencer;
+
 	function new(string name, uvm_component parent);
 		super.new(name, parent);
 	endfunction : new
@@ -33,6 +35,15 @@ class router_tb extends uvm_component;
 		set_config_int("hbus", "num_slaves", 0);
 		
 		hbus = hbus_env::type_id::create("hbus", this);
+
+		virtual_sequencer = router_virtual_sequencer::type_id::create("virtual_sequencer", this);
 	endfunction : build_phase
+
+	// UVM connect_phase
+  function void connect_phase(uvm_phase phase);
+    // Virtual Sequencer Connections
+    virtual_sequencer.hbus_sequencer = hbus.masters[0].sequencer;
+    virtual_sequencer.yapp_sequencer = env.agent.sequencer;
+  endfunction : connect_phase
 
 endclass : router_tb

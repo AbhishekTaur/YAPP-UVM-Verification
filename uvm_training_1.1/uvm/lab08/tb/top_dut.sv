@@ -27,8 +27,10 @@ module top;
   import hbus_pkg::*;
 
   // include the testbench and test class files
+  `include "router_virtual_sequencer.sv"
+  `include "router_virtual_seqs.sv"
   `include "router_tb.sv"
-  `include "router_test_lib.sv"
+  `include "router_vtest_lib.sv"
 
   // clock, reset are generated here for this DUT
   bit reset;

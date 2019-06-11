@@ -14,7 +14,7 @@
 //+UVM_TESTNAME=exhaustive_seq_test
 //+UVM_TESTNAME=router_dut_test
 //+UVM_TESTNAME=simple_test
-+UVM_TESTNAME=test_ovc_integration
++UVM_TESTNAME=virtual_seq_test
 +UVM_VERBOSITY=UVM_LOW
 
 //-gui
