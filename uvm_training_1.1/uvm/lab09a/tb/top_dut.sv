@@ -29,6 +29,7 @@ module top;
   // include the testbench and test class files
   `include "router_virtual_sequencer.sv"
   `include "router_virtual_seqs.sv"
+  `include "router_scoreboard.sv"
   `include "router_tb.sv"
   `include "router_vtest_lib.sv"
 

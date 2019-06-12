@@ -2,13 +2,16 @@ class yapp_tx_monitor extends uvm_monitor;
 
 	`uvm_component_utils(yapp_tx_monitor)
 
+  yapp_packet packet_collected;
+
+  int num_pkt_col;
+
+  uvm_analysis_port #(yapp_packet) item_collected_port;
+
 	function new(string name, uvm_component parent);
 		super.new(name, parent);
+    item_collected_port = new("item_collected_port", this);
 	endfunction : new
-
-	yapp_packet packet_collected;
-
-	int num_pkt_col;
 
 	virtual interface yapp_if vif;
 
@@ -62,7 +65,8 @@ class yapp_tx_monitor extends uvm_monitor;
       	// End transaction recording
       	this.end_tr(packet_collected);
       	`uvm_info(get_type_name(), $sformatf("Packet Collected :\n%s", packet_collected.sprint()), UVM_LOW)
-      	num_pkt_col++;
+      	item_collected_port.write(packet_collected);
+        num_pkt_col++;
   	endtask : collect_packet
 
   	// UVM report_phase
