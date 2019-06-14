@@ -1,4 +1,4 @@
-class router_tb extends uvm_component;
+class router_tb extends uvm_env;
 
 	`uvm_component_utils(router_tb)
 
@@ -14,7 +14,7 @@ class router_tb extends uvm_component;
 
 	router_virtual_sequencer virtual_sequencer;
 
-	router_scoreboard router_sb;
+	router_module_env router_env;
 
 	function new(string name, uvm_component parent);
 		super.new(name, parent);
@@ -40,7 +40,7 @@ class router_tb extends uvm_component;
 
 		virtual_sequencer = router_virtual_sequencer::type_id::create("virtual_sequencer", this);
 
-		router_sb = router_scoreboard::type_id::create("router_sb", this);
+		router_env = router_module_env::type_id::create("router_env", this);
 
 	endfunction : build_phase
 
@@ -51,10 +51,11 @@ class router_tb extends uvm_component;
     virtual_sequencer.yapp_sequencer = env.agent.sequencer;
 
     // Connect the TLM ports from the YAPP and Channel UVCs to the scoreboard
-    env.agent.monitor.item_collected_port.connect(router_sb.sb_yapp_in);
-    channel_env0.rx_agent.monitor.item_collected_port.connect(router_sb.sb_chan0_in);
-    channel_env1.rx_agent.monitor.item_collected_port.connect(router_sb.sb_chan1_in);
-    channel_env2.rx_agent.monitor.item_collected_port.connect(router_sb.sb_chan2_in);
+    env.agent.monitor.item_collected_port.connect(router_env.router_ref.yapp_in);
+    channel_env0.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan0_in);
+    channel_env1.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan1_in);
+    channel_env2.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan2_in);
+    hbus.masters[0].monitor.item_collected_port.connect(router_env.router_ref.hbus_in);
   endfunction : connect_phase
 
 endclass : router_tb

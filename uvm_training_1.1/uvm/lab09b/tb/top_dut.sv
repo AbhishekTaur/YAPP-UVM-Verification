@@ -26,6 +26,9 @@ module top;
 
   import hbus_pkg::*;
 
+  import router_module_pkg::*;
+
+
   // include the testbench and test class files
   `include "router_virtual_sequencer.sv"
   `include "router_virtual_seqs.sv"

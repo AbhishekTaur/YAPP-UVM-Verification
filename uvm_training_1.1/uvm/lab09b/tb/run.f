@@ -35,6 +35,9 @@
 ../../hbus/sv/hbus_pkg.sv 
 ../../hbus/sv/hbus_if.sv 
 
+// router module package
+../sv/router_module_pkg.sv
+
 // router DUT
 ../../router_rtl/yapp_router.v 
 top_dut.sv
