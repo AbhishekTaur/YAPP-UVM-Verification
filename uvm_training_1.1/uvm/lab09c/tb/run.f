@@ -12,11 +12,10 @@
 
 
 // include directories, starting with UVM src directory
--incdir ../sv
 -incdir ../../yapp/sv 
 -incdir ../../channel/sv
 -incdir  ../../hbus/sv 
-
+-incdir ../../router/sv
 //-gui
 //+access+rwc
 
@@ -36,7 +35,7 @@
 ../../hbus/sv/hbus_if.sv 
 
 // router module package
-../sv/router_module_pkg.sv
+../../router/sv/router_module_pkg.sv
 
 // router DUT
 ../../router_rtl/yapp_router.v 

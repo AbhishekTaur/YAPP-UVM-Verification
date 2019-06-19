@@ -51,11 +51,11 @@ class router_tb extends uvm_env;
     virtual_sequencer.yapp_sequencer = env.agent.sequencer;
 
     // Connect the TLM ports from the YAPP and Channel UVCs to the scoreboard
-    env.agent.monitor.item_collected_port.connect(router_env.router_ref.yapp_in);
-    channel_env0.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan0_in);
-    channel_env1.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan1_in);
-    channel_env2.rx_agent.monitor.item_collected_port.connect(router_env.router_sb.sb_chan2_in);
-    hbus.masters[0].monitor.item_collected_port.connect(router_env.router_ref.hbus_in);
+    env.agent.monitor.item_collected_port.connect(router_env.router_yapp);
+    channel_env0.rx_agent.monitor.item_collected_port.connect(router_env.router_chan0);
+    channel_env1.rx_agent.monitor.item_collected_port.connect(router_env.router_chan1);
+    channel_env2.rx_agent.monitor.item_collected_port.connect(router_env.router_chan2);
+    hbus.masters[0].monitor.item_collected_port.connect(router_env.router_hbus);
   endfunction : connect_phase
 
 endclass : router_tb
