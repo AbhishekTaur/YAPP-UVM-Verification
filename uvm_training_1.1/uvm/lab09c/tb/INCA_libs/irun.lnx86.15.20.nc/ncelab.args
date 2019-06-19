@@ -1,0 +1,22 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
++UVM_VERBOSITY=UVM_LOW
++SVSEED=random
+-loadpli
+/softwares/Linux/cadence/INCISIVE152/tools/methodology/UVM/CDNS-1.1d/sv/lib/libuvmpli.so:uvm_pli_boot
+-timescale
+1ns/100ps
++UVM_TESTNAME=virtual_seq_test
+-MESSAGES
+-XLMODE
+./INCA_libs/irun.lnx86.15.20.nc
+-RUNMODE
+-CDSLIB
+./INCA_libs/irun.lnx86.15.20.nc/cds.lib
+-HDLVAR
+./INCA_libs/irun.lnx86.15.20.nc/hdl.var
+-WORK
+worklib
+-HASXLMODE
